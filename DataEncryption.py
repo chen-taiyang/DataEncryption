@@ -44,13 +44,10 @@ Alice 发送给 Bob
             Bob：
                 1、用自己的私钥对密文进行解密得到数字签名
                 2、用Alice的公钥对数字签名进行解密，得到信息摘要
-                3、比对加解密前后信息摘要
+                3、使用DES解密信息摘要获得明文
                 
 
 我们只验证明文的完整性，Alice的DES密钥双方已提前知晓
-为社么不能获得加密前的明文呢？
-    1. 我水平不够
-    2. 图省事，直接用hash()获得摘要，hash不能逆向
 
 
 DES加密中密钥为：taiyang，且使用普通模式，不用CBC模式
@@ -70,7 +67,7 @@ def Alice(message):
     temp = encryptedInformation[:6]
     global dictionary
     dictionary = {temp: encryptedInformation}
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''能跑就行'''''''''''''''''''''''''
     summaryBefore = int(temp, 16)  # 信息摘要
     digitalSignature = rsa.rsaEncode(summaryBefore, Alice_D, Alice_N)  # 数字签名
 
