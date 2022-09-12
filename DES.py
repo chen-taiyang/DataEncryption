@@ -1,7 +1,7 @@
 # Author：taiyang
 # welcome to https://taiyang.space
-import re
 
+import re
 from bitarray import bitarray
 
 '''

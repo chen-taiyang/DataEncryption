@@ -231,9 +231,15 @@ def main():
         rsaMain(p, q)
 
     else:
-        p = int(input("请输入p："))
-        q = int(input("请输入q："))
-        rsaMain(p, q)
+        p = input("请输入p：")
+        while not re.findall('[0-9]+$', p):
+            p = input('必须输入数字！请重新输入：')
+
+        q = input("\n请输入q：")
+        while not re.findall('[0-9]+$', q):
+            q = input('必须输入数字！请重新输入：')
+
+        rsaMain(int(p), int(q))
 
 
 if __name__ == '__main__':
