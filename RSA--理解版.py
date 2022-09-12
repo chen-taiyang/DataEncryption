@@ -221,8 +221,8 @@ def main():
     print("*******  自动生成质数p、q：输入1 ********")
     print("*******  手动输入质数p、q：输入2 ********")
     print("*************************************")
-    option = input("请输入你要选择的模式：")
 
+    option = input("请输入你要选择的模式：")
     while not re.findall('[1-2]+$', option):
         option = input('\n输入有误！请重新输入：')
 
