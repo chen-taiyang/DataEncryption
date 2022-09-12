@@ -3,6 +3,7 @@
 
 import random
 import math
+import re
 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 description：判断输入的p、q是不是质数
@@ -220,27 +221,20 @@ def main():
     print("*******  自动生成质数p、q：输入1 ********")
     print("*******  手动输入质数p、q：输入2 ********")
     print("*************************************")
-    option = int(input("请输入你要选择的模式："))
+    option = input("请输入你要选择的模式：")
 
-    while (True):
-        if option == 1:
-            p, q = autoGetPandQ()
-            rsaMain(p, q)
-            break
+    while not re.findall('[1-2]+$', option):
+        option = input('\n输入有误！请重新输入：')
 
-        elif option == 2:
-            p = int(input("请输入p："))
-            q = int(input("请输入q："))
-            rsaMain(p, q)
-            break
+    if eval(option) == 1:
+        p, q = autoGetPandQ()
+        rsaMain(p, q)
 
-        else:
-            print("输入有误！请重新输入！")
-            option = int(input("请输入你要选择的模式："))
+    else:
+        p = int(input("请输入p："))
+        q = int(input("请输入q："))
+        rsaMain(p, q)
 
 
 if __name__ == '__main__':
-    try:
-        main()
-    except ValueError:
-        print("输入有误！")
+    main()

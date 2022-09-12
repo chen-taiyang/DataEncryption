@@ -1,5 +1,6 @@
 # Author：taiyang
 # welcome to https://taiyang.space
+import re
 
 from bitarray import bitarray
 
@@ -486,20 +487,16 @@ class DES:
         print("*******     普通模式：输入 1    ********")
         print("*******     CBC模式：输入 2    ********")
         print("*************************************")
-        option = int(input("请输入你要选择的模式："))
 
-        while (True):
-            if option == 1:
-                self.normalMode()
-                break
+        option = input("请输入你要选择的模式：")
+        while not re.findall('[1-2]+$', option):
+            option = input('\n输入有误！请重新输入：')
 
-            elif option == 2:
-                self.cbdMode()
-                break
+        if eval(option) == 1:
+            self.normalMode()
 
-            else:
-                print("输入有误！请重新输入！\n")
-                option = int(input("请输入你要选择的模式："))
+        else:
+            self.cbdMode()
 
 
 if __name__ == '__main__':
